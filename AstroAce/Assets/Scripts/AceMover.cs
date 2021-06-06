@@ -25,7 +25,7 @@ public class AceMover : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            aceRB.AddForce(-transform.forward * thrust);
+            aceRB.AddForce(transform.forward * thrust);
             if (flame.activeSelf == false)
                 flame.SetActive(true);
         }

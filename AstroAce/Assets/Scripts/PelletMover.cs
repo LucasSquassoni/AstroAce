@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class PelletMover : MonoBehaviour
 {
-    public Vector3 moveDir;
     public float projectileSpeed;
+    public bool active;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        Destroy(gameObject, 3f);
+        active = true;
+        Invoke("Deactivator", 2f);
+    }
+
+    private void OnDisable()
+    {
+        active = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(moveDir * projectileSpeed * Time.deltaTime);
+        if (active)
+            transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
+    }
+
+    void Deactivator()
+    {
+        gameObject.SetActive(false);
     }
 }
