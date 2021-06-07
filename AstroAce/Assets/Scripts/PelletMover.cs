@@ -5,12 +5,13 @@ using UnityEngine;
 public class PelletMover : MonoBehaviour
 {
     public float projectileSpeed;
+    public float lifeTime;
     public bool active;
 
     private void OnEnable()
     {
         active = true;
-        Invoke("Deactivator", 2f);
+        Invoke("Deactivator", lifeTime);
     }
 
     private void OnDisable()
